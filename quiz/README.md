@@ -10,9 +10,9 @@ Nesta etapa vamos avaliar o seu conhecimento em alguns pontos.
  - Manutenibilidade do Código
  - Arquitetura (Boas práticas e organização)
 
-## Proposta:
+## Proposta do projeto:
 
-  1. Um cliente XPTO enviou uma solicitação de projeto onde o escopo consiste no desenvolvimento de uma aplicação web.
+  Um cliente XPTO enviou uma solicitação de projeto onde o escopo consiste no desenvolvimento de uma aplicação web.
   
   Esta aplicação se trata de um jogo de perguntas e respostas múltiplas (quiz) sobre esportes. 
   
