@@ -4,7 +4,7 @@
 
 1 - Faça o download dos arquivos.
 
-2 - Extraia o pacote e copie para seu webserver (Requirido PHP 7.2 ou Superior / PostgreSQL 9.5 ou superior).
+2 - Extraia o pacote e copie para seu webserver (Requerido PHP 7.2 ou Superior / PostgreSQL 9.5 ou Superior).
 
 3 - Criar um banco de dados no PostgreSQL
 
