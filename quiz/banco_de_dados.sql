@@ -28,4 +28,11 @@ create table public.respostas
     foreign key (id_pergunta) references public.perguntas (id_pergunta) on delete cascade
 );
 
+create table public.ranking
+(
+    nome varchar(100) not null,
+    pontos smallint not null,
+    primary key (nome)
+);
+
 insert into public.usuarios (email, nomecompleto, senha) values ('admin@admin.com.br', 'Administrador', md5('123456'))

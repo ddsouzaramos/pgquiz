@@ -1,21 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class respostas_model extends CI_Model {
+class ranking_model extends CI_Model {
 
     // TABELA
-    var $tabela = 'respostas';
+    var $tabela = 'ranking';
 
     // ORDEM DAS COLUNAS
     // DEFINIR A ORDEM DAS COLUNAS DE ACORDO COM O BANCO DE DADOS
-    var $ordem_colunas = array('id_resposta', 'descricao');
+    var $ordem_colunas = array('nome', 'pontuacao');
 
     // COLUNAS PARA BUSCA
     // CAMPOS DE PESQUISA DA TABELA
-    var $pesquisa_colunas = array('descricao');
+    var $pesquisa_colunas = array('nome', 'pontuacao');
 
     // ORDEM PADRÃO
-    var $ordem_padrao = array('ordem' => 'asc');
+    var $ordem_padrao = array('nome' => 'asc');
 
     private function _get_datatables_query() {
 
@@ -36,7 +36,7 @@ class respostas_model extends CI_Model {
                 }
 
                 if(count($this->pesquisa_colunas) - 1 == $i)
-                    $this->db->group_end();
+                    $this->db->group_end(); //close bracket
             }
             $i++;
         }
@@ -58,17 +58,16 @@ class respostas_model extends CI_Model {
         return $query->result();
     }
 
-    function get_by_id_pergunta($id_pergunta) {
-        $this->db->from($this->tabela);
-        $this->db->where('id_pergunta', $id_pergunta);
-        $query = $this->db->get();
-        return $query->result();
-    }
-
     function count_filtered() {
         $this->_get_datatables_query();
         $query = $this->db->get();
         return $query->num_rows();
+    }
+
+    function get_all_active() {
+        $this->db->from($this->tabela);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function count_all() {
@@ -78,15 +77,24 @@ class respostas_model extends CI_Model {
 
     public function get_by_id($id) {
         $this->db->from($this->tabela);
-        $this->db->where('id_resposta', $id);
+        $this->db->where('nome', $id);
         $query = $this->db->get();
 
         return $query->row();
     }
 
-    public function save($data) {
-        $this->db->insert($this->tabela, $data);
-        return $this->db->affected_rows();
+    public function save($nome, $pontos) {
+
+        $query = "INSERT INTO ranking (nome, pontos)
+                  VALUES ('$nome', $pontos)
+                      ON CONFLICT (nome) DO UPDATE
+                     SET pontos = EXCLUDED.pontos";
+
+        if($this->db->query($query))
+            return true;
+        else
+            return false;
+
     }
 
     public function update($where, $data) {
@@ -95,31 +103,19 @@ class respostas_model extends CI_Model {
     }
 
     public function delete_by_id($id) {
-        $this->db->where('id_resposta', $id);
+        $this->db->where('nome', $id);
         $this->db->delete($this->tabela);
     }
 
-    public function get_last_ordem($id_pergunta) {
-        $this->db->from($this->tabela);
-        $this->db->where('id_pergunta', $id_pergunta);
-        $this->db->select_max('ordem');
-        $query = $this->db->get();
+    public function get_ranking() {
 
-        if($query->row()->ordem == null)
-            return 1;
-        else
-            return $query->row()->ordem + 1;
-    }
+        $query = "select rank() over(order by pontos desc, nome asc) rkg,
+                         nome,
+                         pontos
+                    from ranking
+                   order by pontos desc, nome asc";
 
-    public function verifica_resposta_verdadeira($id_resposta) {
-        $this->db->from($this->tabela);
-        $this->db->where('id_resposta', $id_resposta);
-        $query = $this->db->get();
-
-        if($query->row()->correta == 't')
-            return true;
-        else
-            return false;
+        return $this->db->query($query)->result();
     }
 
 }

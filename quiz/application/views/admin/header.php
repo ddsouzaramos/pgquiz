@@ -53,7 +53,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li><a href="<?= base_url('perguntas'); ?>"><i class="fa fa-question"></i> Perguntas</a></li>
-                        <li><a href="<?= base_url('usuarios'); ?>"><i class="fa fa-users"></i> Usuários</a></li>
+                        <li><a href="<?= base_url('/login/encerrar_sessao'); ?>"><i class="fa fa-power-off"></i> Sair</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
