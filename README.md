@@ -1,38 +1,21 @@
-# Back-end Senior
+# PGQuiz
 
-## Como fazer o teste?
+## Instalação
 
-  * Clone o projeto na sua máquina
-  * Siga as instruções do **README.md** contido em cada uma das pastas
-  * Crie o projeto em um respositório pessoal
-  * Mude o remote do repositório clonado para o seu repositório pessoal
-  * Envie o link do seu respositório para a pessoa que lhe enviou o teste
+1 - Faça o download dos arquivos.
 
-> Faça tudo com calma e carinho que vamos olhar desta forma na hora de analisar o seu teste, e boa sorte <3
+2 - Extraia o pacote e copie para seu webserver (Requerido PHP 7.2 ou Superior / PostgreSQL 9.5 ou Superior).
 
-- - - - -
+3 - Criar um banco de dados no PostgreSQL
 
-## O que esperamos de você e o que faremos no dia-a-dia:
-A Sapient AG2 está em busca de profissionais senior, que tenham uma bagagem em projetos de médio e grande porte com diversas tecnologias diferentes. Não estamos procurando especialistas em frameworks mas sim profissionais que queiram experimentar os mais diversos tipos de tecnologias, criando novos conjuntos de trabalho entre front-end e back-end. O trabalho do dia-a-dia envolve criação, manutenção e atualização de sistemas utilizando PHP, Laravel, MySQL, PostgreSQL e outras tecnologias de acordo com as especificações e necessidades de cada projeto.
-Além da manutenção esperamos que você dê orientações, faça revisão de código e auxilie os outros profissionais no desenvolvimento profissional e de suas tarefas.
+4 - Executar o arquivo que se encontra na raiz do repositório chamado Banco de Dados.sql, onde serão criados os objetos no banco de dados.
 
-Além de projetos para clientes nós possuímos produtos internos que foram totalmente desenvolvidos pela nossa equipe e sempre aperfeiçoando. Eles servem de base para testes de novas tecnologias e também para a criação de frameworks de trabalho. Os frameworks tem como intenção aplicar as melhores práticas de desenvolvimento junto da melhor performance e com o máximo de integrações e testes.
+5 - Editar o arquivo index.php que está na raiz do projeto e alterar a variável BASEURL com o endereço do webserver e diretório da aplicação.
 
-## Conhecimentos básicos:
-  - PHP / HTML / JS
-  - Orientação a Objetos (OOP)
-  - Composer
-  - SQL
-  - Git
+6 - Editar o arquivo aplication\config\database.php e ajustar os parâmetros (hostname, port, username, password, database) do banco de dados (PostgreSQL).
 
-## Conhecimentos desejados:
-  - Rest API
-  - PostgreSQL
-  - Docker Compose - Criação de projetos com máquinas no Docker
-  - Boa organização do código, seguindo padrões de desenvolvimento
+7 - A aplicação possui um portal de administração onde serão cadastradas as perguntas e respostas, o portal será acessado no endereço da aplicação, por exemplo: http://www.seudominio.com.br/pgquiz
 
-## Ganhando nosso coração:
-  - Docker - Criação de máquinas específicas por projetos
-  - CI/CD - Configuração e menutenção de processos de compilação, testes e publicação
-  - Linux - Conhecimento de ambiente Linux como operações com o GIT e conexões SSH via terminal
+8 - Para responder a Quiz acesse no endpoint /quiz, por exemplo, http://www.seudominio.com.br/pgquiz/quiz
 
+9 - Para finalizar o ranking estará disponível no endpoint /ranking, por exemplo, http://www.seudominio.com.br/pgquiz/quiz
