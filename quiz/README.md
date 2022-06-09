@@ -1,6 +1,6 @@
 # PGQuiz
 
-Instalação
+##Instalação
 
 1 - Faça o download dos arquivos.
 
