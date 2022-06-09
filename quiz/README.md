@@ -1,39 +1,21 @@
-# Back-end Senior
+# PGQuiz
 
-## Analise de Desenvolvimento
+Instalação
 
-Nesta etapa vamos avaliar o seu conhecimento em alguns pontos.
- - Documentação
- - Código limpo e organizado (nomenclatura, etc)
- - Ser consistente e saber argumentar suas escolhas
- - Modelagem de Dados
- - Manutenibilidade do Código
- - Arquitetura (Boas práticas e organização)
+1 - Faça o download dos arquivos.
 
-## Proposta do projeto:
+2 - Extraia o pacote e copie para seu webserver (Requirido PHP 7.2 ou Superior / PostgreSQL 9.5 ou superior).
 
-  Um cliente XPTO enviou uma solicitação de projeto onde o escopo consiste no desenvolvimento de uma aplicação web.
-  
-  Esta aplicação se trata de um jogo de perguntas e respostas múltiplas (quiz) sobre esportes. 
-  
-  Cada pergunta possuirá 3 alternativas, sendo 1 correta, que valerá 10 pontos.
-  
-  A aplicação deve exibir de forma aleatória 5 questões e ao final do questionário exibir os pontos atingidos. 
-  
-  A aplicação deve exibir um ranking geral. 
-  
-  Este questionário terá uma duração de 6 meses. 
-  
-  Com base no escopo do sistema e suas definições. 
-  
-  - Utilizando a base de dados de sua escolha, crie todos os objetos necessários na base de dados que atendam o projeto. 
-  
-  - Desenvolva um novo projeto em PHP (utilizando o software de sua preferência) levando em consideração o modelo de arquitetura definido anteriormente.
-  
-  - Desenvolva uma tela de cadastro básico (CRUD) para as perguntas e suas respostas.
-  
-  - Desenvolva um ou mais métodos que retorne de forma aleatória as perguntas e suas respectivas alternativas. O retorno deve ser um objeto estruturado do tipo JSON. 
+3 - Criar um banco de dados no PostgreSQL
 
-## A entrega deve ser:
-  1. Criar um arquivo **.md** com detalhes do projeto (documentação) e com uma justificativa sobre as tecnologias aplicadas.
-  2. Comitar todos os arquivos dentro desta pasta no projeto.
+4 - Executar o arquivo que se encontra na raiz do repositório chamado Banco de Dados.sql, onde serão criados os objetos no banco de dados.
+
+5 - Editar o arquivo index.php que está na raiz do projeto e alterar a variável BASEURL com o endereço do webserver e diretório da aplicação.
+
+6 - Editar o arquivo aplication\config\database.php e ajustar os parâmetros (hostname, port, username, password, database) do banco de dados (PostgreSQL).
+
+7 - A aplicação possui um portal de administração onde serão cadastradas as perguntas e respostas, o portal será acessado no endereço da aplicação, por exemplo: http://www.seudominio.com.br/pgquiz
+
+8 - Para responder a Quiz acesse no endpoint /quiz, por exemplo, http://www.seudominio.com.br/pgquiz/quiz
+
+9 - Para finalizar o ranking estará disponível no endpoint /ranking, por exemplo, http://www.seudominio.com.br/pgquiz/quiz
