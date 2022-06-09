@@ -53,7 +53,19 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+
+    //AQUI DEFINE O AMBIENTE (DESENVOLVIMENTO OU PRODUÇÃO)
+    switch($_SERVER["HTTP_HOST"]) {
+        case ("localhost"):
+            define('ENVIRONMENT', 'development');
+            define("BASEURL", "http://localhost/publicis_groupe/teste-senior/quiz/");
+        break;
+        default:
+            define('ENVIRONMENT', 'production');
+            define("BASEURL", "http://localhost/publicis_groupe/teste-senior/quiz/");
+        break;
+    }
 
 /*
  *---------------------------------------------------------------
