@@ -92,4 +92,23 @@ class perguntas_model extends CI_Model {
         $this->db->delete($this->tabela);
     }
 
+    public function get_perguntas_quiz() {
+
+        $query = "select perguntas.id_pergunta,
+                         perguntas.descricao as pergunta,
+                         respostas.id_resposta,
+                         respostas.descricao as resposta
+                    from perguntas
+                   inner join respostas on respostas.id_pergunta = perguntas.id_pergunta
+                   where perguntas.id_pergunta in (select perguntas.id_pergunta
+                                                     from perguntas
+                                                    order by random()
+                                                    limit 5)
+                   order by perguntas.id_pergunta,
+                            respostas.ordem";
+
+        return $this->db->query($query)->result();
+
+    }
+
 }

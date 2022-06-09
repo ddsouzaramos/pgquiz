@@ -11,7 +11,6 @@ class Perguntas extends MY_Controller {
 
     public function index() {
         $data['titulo_pagina'] = "Perguntas";
-        #$data['processos'] = $this->processos_model->get_all();
         $this->load->view('admin/perguntas_view', $data);
     }
 
